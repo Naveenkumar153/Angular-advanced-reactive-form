@@ -1,0 +1,45 @@
+<div class="form" [formGroup]="form">
+    <div class="form-group">
+        <mat-form-field class="form-filed">
+            <input matInput type="text" placeholder="Course title" formControlName="title" #title class="title">
+            <mat-hint class="mat-hint">{{ title.value.length }} / 20</mat-hint>
+        </mat-form-field>
+        <div *ngIf="courseTitle.invalid && ( courseTitle.touched || courseTitle.dirty)">
+            <mat-error *ngIf="courseTitle.errors?.['required']">course title required</mat-error>
+            <mat-error *ngIf="courseTitle.errors?.['minlength']">course title min length 5 want</mat-error>
+            <mat-error *ngIf="courseTitle.errors?.['maxlength']">course title max length 20 char allowed</mat-error>
+            <mat-error *ngIf="courseTitle.errors?.['titleExists']">course title already here</mat-error>
+        </div>
+        <mat-form-field class="form-filed">
+            <mat-select placeholder="Select Category" formControlName="category">
+                <ng-container *ngFor="let category of ( courseCategory$  | async )">
+                    <mat-option [value]="category.title">{{ category.title }}</mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-filed">
+            <input type="text" matInput [matDatepicker]="releaseDatePicker" placeholder="Release Date" formControlName="releaseAt">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle [for]="releaseDatePicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #releaseDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-checkbox color="primary" formControlName="downloadAllowed">Download Allowed ?</mat-checkbox>
+        <mat-form-field appearance="outline" class="form-filed">
+            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+        <div *ngIf="descrip.invalid && ( descrip.touched || descrip.dirty)">
+            <mat-error *ngIf="descrip.errors?.['required']">description required</mat-error>
+            <mat-error *ngIf="descrip.errors?.['minlength']">description min length want 5 char</mat-error>
+        </div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    <div class="buttons">
+        <div class="submit-button">
+            <button mat-raised-button color="primary" (click)="submitData()">submit</button>
+        </div>
+        <div class="submit-button">
+            <button mat-raised-button color="primary" (click)="getData()">get Data</button>
+        </div>
+    </div>
+    <div>{{ form.value | json }}</div>
+</div>
