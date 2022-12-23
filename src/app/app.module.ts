@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 // components
 import { AppLevelHttpInterceptor } from './services/http-interceptor.interceptor';
 import { CoursesComponent } from './courses/courses.component';
@@ -41,6 +42,7 @@ import { CourseStep2Component } from './courses/course-step2/course-step2.compon
     MatNativeDateModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatRadioModule,
   ],
   providers: [
     { 
