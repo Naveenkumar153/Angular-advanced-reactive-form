@@ -9,8 +9,8 @@
     <mat-form-field class="form-filed">
         <mat-label>Promotional period</mat-label>
         <mat-date-range-input [rangePicker]="promoPicker">
-            <input matStartDate placeholder="start Date" formArrayName="promoStartAt">
-            <input matEndDate placeholder="end Date" formArrayName="promoEndAt">
+            <input matStartDate placeholder="start Date" formControlName="promoStartAt">
+            <input matEndDate placeholder="end Date" formControlName="promoEndAt">
         </mat-date-range-input>
         <mat-error *ngIf="form.errors?.['promoPeriod'] && form.dirty">The start date must be before the end date.</mat-error>
         <mat-datepicker-toggle matSuffix [for]="promoPicker"></mat-datepicker-toggle>

@@ -15,17 +15,22 @@ import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexModule } from '@angular/flex-layout';
+import { GridModule } from '@angular/flex-layout';
 // components
 import { AppLevelHttpInterceptor } from './services/http-interceptor.interceptor';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseStep1Component } from './courses/course-step1/course-step1.component';
 import { CourseStep2Component } from './courses/course-step2/course-step2.component';
+import { LayoutComponent } from './layout/layout.component';
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
     CourseStep1Component,
-    CourseStep2Component
+    CourseStep2Component,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,9 @@ import { CourseStep2Component } from './courses/course-step2/course-step2.compon
     MatCheckboxModule,
     MatSelectModule,
     MatRadioModule,
+    FlexLayoutModule,
+    FlexModule,
+    GridModule,
   ],
   providers: [
     { 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
 import { createPromoRangeValidator } from 'src/app/validators/date.rage.validators';
 
 @Component({
@@ -14,13 +14,9 @@ export class CourseStep2Component implements OnInit {
     price:[null,Validators.required],
     promoStartAt:[null],
     promoEndAt:[null],
-  },
-  { 
-    Validators: [createPromoRangeValidator()],
-    updateOn:'blur',
-  } 
-  );
-
+  }, 
+  { validators: [createPromoRangeValidator()],updateOn:'blur', });
+// createPromoRangeValidator()
   constructor(private fb:FormBuilder){
 
   }

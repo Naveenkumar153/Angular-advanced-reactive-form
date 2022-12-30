@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Dataservice } from 'src/app/services/dataservice.service';
 import { courseTitleValidator } from 'src/app/validators/course-title.validator';
-
+import { filter } from 'rxjs/operators';
 interface CourseCategory {
   title:string,
 }
@@ -40,6 +40,17 @@ export class CourseStep1Component implements OnInit {
 
   ngOnInit(): void {
     this.courseCategory$ = this.dataService.getData();
+
+    const draft = localStorage.getItem('STEP_1');
+
+    if(draft){
+      this.form.setValue(JSON.parse(draft));
+    }
+
+    // this.form.valueChanges.pipe(
+    //   filter(() => this.form.valid)
+    // ).subscribe((val) => localStorage.setItem('STEP_1',JSON.stringify(val)));
+    this.form.valueChanges.subscribe((val) => localStorage.setItem('STEP_1',JSON.stringify(val)));
   }
 
   getData(){
